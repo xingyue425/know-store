@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="better:war">
+    <output-path>$PROJECT_DIR$/better/target</output-path>
+    <root id="archive" name="better.war">
+      <element id="artifact" artifact-name="better:war exploded" />
+    </root>
+  </artifact>
+</component>
