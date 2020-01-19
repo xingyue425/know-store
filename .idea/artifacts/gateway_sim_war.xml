@@ -1,7 +1,7 @@
 <component name="ArtifactManager">
   <artifact type="war" name="gateway-sim:war">
     <output-path>$PROJECT_DIR$/better/target</output-path>
-    <root id="archive" name="gateway-sim.war">
+    <root id="archive" name="better.war">
       <element id="artifact" artifact-name="gateway-sim:war exploded" />
     </root>
   </artifact>

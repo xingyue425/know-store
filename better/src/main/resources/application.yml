@@ -1,52 +1,48 @@
 spring:
-  freemarker:
-    cache: false
-    charset: UTF-8
-    suffix: .ftl
-    content-type: text/html
-    template-loader-path: classpath:templates/
-    request-context-attribute: request
-  resources:
-    static-locations: classpath:/static/
-  mvc:
-    static-path-pattern: /static/**
   datasource:
-    name: mybatis_test
-    #使用druid连接池
+    name: betterdb
+    #\u4F7F\u7528druid\u8FDE\u63A5\u6C60
     type: com.alibaba.druid.pool.DruidDataSource
-    #druid相关配置
+    #druid\u76F8\u5173\u914D\u7F6E
     druid:
-      #监控统计拦截的filters
+      #\u76D1\u63A7\u7EDF\u8BA1\u62E6\u622A\u7684filters
       filters: stat
-      driver-class-name: com.mysql.jdbc.Driver
-      #配置基本属性
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      #\u914D\u7F6E\u57FA\u672C\u5C5E\u6027
       url: jdbc:mysql://localhost:3306/ticket?characterEncoding=utf-8&useSSL=true&serverTimezone=GMT
       username: root
       password: root
-      #配置初始化大小/最小/最大
+      #\u914D\u7F6E\u521D\u59CB\u5316\u5927\u5C0F/\u6700\u5C0F/\u6700\u5927
       initial-size: 1
       min-idle: 1
       max-active: 20
-      #获取连接等待超时时间
+      #\u83B7\u53D6\u8FDE\u63A5\u7B49\u5F85\u8D85\u65F6\u65F6\u95F4
       max-wait: 60000
-      #间隔多久进行一次检测，检测需要关闭的空闲连接
+      #\u95F4\u9694\u591A\u4E45\u8FDB\u884C\u4E00\u6B21\u68C0\u6D4B\uFF0C\u68C0\u6D4B\u9700\u8981\u5173\u95ED\u7684\u7A7A\u95F2\u8FDE\u63A5
       time-between-eviction-runs-millis: 60000
-      #一个连接在池中最小生存的时间
+      #\u4E00\u4E2A\u8FDE\u63A5\u5728\u6C60\u4E2D\u6700\u5C0F\u751F\u5B58\u7684\u65F6\u95F4
       min-evictable-idle-time-millis: 300000
       validation-query: SELECT 'x'
       test-while-idle: true
       test-on-borrow: false
       test-on-return: false
-      #打开PSCache，并指定每个连接上PSCache的大小。oracle设为true，mysql设为false。分库分表较多推荐设置为false
+      #\u6253\u5F00PSCache\uFF0C\u5E76\u6307\u5B9A\u6BCF\u4E2A\u8FDE\u63A5\u4E0APSCache\u7684\u5927\u5C0F\u3002oracle\u8BBE\u4E3Atrue\uFF0Cmysql\u8BBE\u4E3Afalse\u3002\u5206\u5E93\u5206\u8868\u8F83\u591A\u63A8\u8350\u8BBE\u7F6E\u4E3Afalse
       pool-prepared-statements: false
       max-pool-prepared-statement-per-connection-size: 20
+  thymeleaf:
+    mode: HTML
+    cache: false
+    encoding: UTF-8
+    servlet:
+      content-type: text/html
+    prefix: classpath:/templates/
+    suffix: .html
+server:
+  servlet:
+    context-path: /better
+  port: 8080
 mybatis:
   mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: com.zk.boots.vo
+  type-aliases-package: com.zk.better.vo
   configuration:
     map-underscore-to-camel-case: true
-pagehelper:
-  helper-dialect: mysql
-  reasonable: true
-  support-methods-arguments: true
-  params: countSql

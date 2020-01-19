@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="clusterdemo:war">
+    <output-path>$PROJECT_DIR$/clusterdemo/target</output-path>
+    <root id="archive" name="clusterdemo.war">
+      <element id="artifact" artifact-name="clusterdemo:war exploded" />
+    </root>
+  </artifact>
+</component>
